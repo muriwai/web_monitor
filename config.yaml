@@ -1,0 +1,18 @@
+# One entry per page you want watched.
+# name:     short label used in alerts and as the state filename
+# url:      the page to fetch
+# selector: (optional) CSS selector to narrow what's compared, e.g. "main" or "#content"
+#           Leave blank/omit to hash the whole page body text.
+# ignore_regex: (optional) list of regex patterns stripped from the text before hashing/diffing
+#           (handy for stripping timestamps, view counters, CSRF tokens, etc.)
+
+pages:
+  - name: cafelat-news
+    url: https://www.cafelat.co.uk/pages/news
+    selector: 'div[id$="__main"]'  # Shopify page-content section (skips header/nav)
+    ignore_regex: []
+
+  # Add more pages here, e.g.:
+  # - name: some-other-page
+  #   url: https://example.com/changelog
+  #   selector: ".content"
