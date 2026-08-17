@@ -12,6 +12,143 @@ pages:
     selector: 'div[id$="__main"]'  # Shopify page-content section (skips header/nav)
     ignore_regex: []
 
+  # ---------------------------------------------------------------------------
+  # UK WASC Drainage & Wastewater Management Plan (DWMP) Cycle 2 pages.
+  # Each company brands its second cycle differently (DWMP28, DWMP29, etc. --
+  # none of them actually call it "DWMP2"). Selectors below default to "main"
+  # (untested per-site) -- narrow them further if a page fires false alerts
+  # from nav/footer churn, the same way cafelat-news was tuned above.
+  #
+  # Known caveats:
+  #  - The Yorkshire Water "hub" (ArcGIS) and Wessex Water "StoryMap" pages are
+  #    JS-rendered; a plain HTML fetch sees little content, so change
+  #    detection on those will be unreliable.
+  # ---------------------------------------------------------------------------
+
+  # Anglian Water -- DWMP28 (no separate Cycle 2 sub-page yet; all on main page)
+  - name: anglian-dwmp-main
+    url: https://www.anglianwater.co.uk/about-us/our-strategies-and-plans/drainage-and-wastewater-management-plan/
+    selector: "main"
+    ignore_regex: []
+
+  # Northumbrian Water -- DWMP28 (still Cycle-1-only content as of last check)
+  - name: northumbrian-dwmp-main
+    url: https://www.nwl.co.uk/help-and-support/wastewater/dwmp/
+    selector: "main"
+    ignore_regex: []
+  - name: northumbrian-dwmp-methodologies
+    url: https://www.nwl.co.uk/help-and-support/wastewater/dwmp/dwmp-methodologies/
+    selector: "main"
+    ignore_regex: []
+  - name: northumbrian-dwmp-updates
+    url: https://www.nwl.co.uk/help-and-support/wastewater/dwmp/latest-dwmp-updates/
+    selector: "main"
+    ignore_regex: []
+
+  # Severn Trent Water -- DWMP28 (live Cycle 2 page with content)
+  - name: severntrent-dwmp-main
+    url: https://www.severntrent.com/about-us/our-plans/drainage-wastewater-management-plan/
+    selector: "main"
+    ignore_regex: []
+  - name: severntrent-dwmp-cycle2
+    url: https://www.severntrent.com/about-us/our-plans/drainage-wastewater-management-plan/drainage-and-wastewater-management-plan-cycle-2/
+    selector: "main"
+    ignore_regex: []
+
+  # South West Water -- DWMP28 (Strategic Context stage; consultation autumn 2027)
+  - name: southwestwater-dwmp-main
+    url: https://www.southwestwater.co.uk/about-us/what-we-do/engineering-projects/wastewater/drainage-and-wastewater-management-plan
+    selector: "main"
+    ignore_regex: []
+  - name: southwestwater-dwmp28
+    url: https://www.southwestwater.co.uk/about-us/what-we-do/engineering-projects/wastewater/drainage-and-wastewater-management-plan/dwmp28
+    selector: "main"
+    ignore_regex: []
+  - name: southwestwater-dwmp28-have-your-say
+    url: https://www.southwestwater.co.uk/about-us/what-we-do/engineering-projects/wastewater/drainage-and-wastewater-management-plan/have-your-say-on-the-dwmp
+    selector: "main"
+    ignore_regex: []
+  - name: southwestwater-dwmp28-documents
+    url: https://www.southwestwater.co.uk/about-us/what-we-do/engineering-projects/wastewater/drainage-and-wastewater-management-plan/dwmp28/our-dwmp28-documents
+    selector: "main"
+    ignore_regex: []
+
+  # Southern Water -- DWMP28 (live page, no docs listed yet)
+  - name: southernwater-dwmp-main
+    url: https://www.southernwater.co.uk/about-us/our-plans/drainage-and-wastewater-management-plans/
+    selector: "main"
+    ignore_regex: []
+  - name: southernwater-dwmp28
+    url: https://www.southernwater.co.uk/about-us/our-plans/drainage-and-wastewater-management-plan-2028/
+    selector: "main"
+    ignore_regex: []
+
+  # Thames Water -- DWMP28 (no live consultation yet, due Nov 2027)
+  - name: thameswater-dwmp-main
+    url: https://www.thameswater.co.uk/about-us/regulation/drainage-and-wastewater-management
+    selector: "main"
+    ignore_regex: []
+  - name: thameswater-dwmp28
+    url: https://www.thameswater.co.uk/about-us/regulation/drainage-and-wastewater-management/dwmp28
+    selector: "main"
+    ignore_regex: []
+  - name: thameswater-dwmp28-portals
+    url: https://www.thameswater.co.uk/about-us/regulation/drainage-and-wastewater-management/dwmp28/dwmp28-portals
+    selector: "main"
+    ignore_regex: []
+  - name: thameswater-dwmp-headlines
+    url: https://www.thameswater.co.uk/about-us/regulation/drainage-and-wastewater-management/our-dwmp-headlines
+    selector: "main"
+    ignore_regex: []
+  - name: thameswater-dwmp-region-intro
+    url: https://www.thameswater.co.uk/about-us/regulation/drainage-and-wastewater-management/introduction-to-our-region
+    selector: "main"
+    ignore_regex: []
+
+  # United Utilities -- DWMP28 (early market-engagement stage only)
+  - name: unitedutilities-dwmp-main
+    url: https://www.unitedutilities.com/corporate/about-us/our-future-plans/Our-long-term-plans/
+    selector: "main"
+    ignore_regex: []
+  - name: unitedutilities-dwmp-resource-centre
+    url: https://www.unitedutilities.com/corporate/about-us/our-future-plans/Our-long-term-plans/dwmp-resource-centre/
+    selector: "main"
+    ignore_regex: []
+  - name: unitedutilities-dwmp-portal
+    url: https://www.unitedutilities.com/corporate/about-us/our-future-plans/Our-long-term-plans/dwmp-portal/
+    selector: "main"
+    ignore_regex: []
+
+  # Wessex Water -- DWMP28 (Strategic Context + Progress Report already published)
+  - name: wessexwater-dwmp-main
+    url: https://corporate.wessexwater.co.uk/our-future/our-plans/drainage-and-wastewater-management-plan
+    selector: "main"
+    ignore_regex: []
+  - name: wessexwater-dwmp-documents
+    url: https://corporate.wessexwater.co.uk/document-library/environmental-information-documents
+    selector: "main"
+    ignore_regex: []
+
+  # Yorkshire Water -- DWMP2 (draft consultation due Nov 2027)
+  - name: yorkshirewater-dwmp-main
+    url: https://www.yorkshirewater.com/about-us/our-vision-and-plans/drainage-and-wastewater-management-plan-1/
+    selector: "main"
+    ignore_regex: []
+  - name: yorkshirewater-dwmp-hub
+    url: https://drainage-and-wastewater-management-plan-yorkshirewater.hub.arcgis.com/
+    selector: null  # JS-rendered ArcGIS hub -- plain fetch sees minimal content
+    ignore_regex: []
+
+  # Welsh Water (Dŵr Cymru) -- DWMP29
+  - name: welshwater-dwmp-main
+    url: https://www.dwrcymru.com/en/our-services/wastewater/drainage-and-wastewater-management-plan
+    selector: "main"
+    ignore_regex: []
+  - name: welshwater-dwmp29
+    url: https://www.dwrcymru.com/en/our-services/wastewater/drainage-and-wastewater-management-plan/our-next-plan-dwmp29
+    selector: "main"
+    ignore_regex: []
+
   # Add more pages here, e.g.:
   # - name: some-other-page
   #   url: https://example.com/changelog

@@ -28,11 +28,18 @@ from bs4 import BeautifulSoup
 
 STATE_DIR = Path(__file__).parent / "state"
 CONFIG_PATH = Path(__file__).parent / "config.yaml"
-USER_AGENT = "Mozilla/5.0 (compatible; page-watcher/1.0; +https://github.com/)"
+REQUEST_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-GB,en;q=0.9",
+}
 
 
 def fetch_text(url: str, selector: str | None) -> str:
-    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    resp = requests.get(url, headers=REQUEST_HEADERS, timeout=30)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
