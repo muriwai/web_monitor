@@ -12,6 +12,11 @@ pages:
     selector: 'div[id$="__main"]'  # Shopify page-content section (skips header/nav)
     ignore_regex: []
 
+  - name: bbc-news
+    url: https://www.bbc.co.uk/news
+    selector: "main"  # changes frequently -- useful for exercising the alert pipeline
+    ignore_regex: []
+
   # Add more pages here, e.g.:
   # - name: some-other-page
   #   url: https://example.com/changelog
