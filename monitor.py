@@ -127,7 +127,7 @@ def main() -> int:
         print("No pages configured in config.yaml", file=sys.stderr)
         return 1
 
-    any_error = False
+    error_count = 0
     for page in pages:
         name = page["name"]
         url = page["url"]
@@ -138,7 +138,7 @@ def main() -> int:
             raw_text = fetch_text(url, selector)
         except Exception as exc:  # noqa: BLE001
             print(f"[error] fetching {name} ({url}): {exc}", file=sys.stderr)
-            any_error = True
+            error_count += 1
             continue
 
         text = clean_text(raw_text, ignore_regex)
@@ -161,7 +161,13 @@ def main() -> int:
         else:
             print(f"[ok] {name}: no change")
 
-    return 1 if any_error else 0
+    if error_count:
+        print(f"[summary] {error_count}/{len(pages)} page(s) failed to fetch", file=sys.stderr)
+
+    # Only fail the whole job if every single page errored (e.g. a config/network
+    # problem) -- a handful of sites blocking GitHub's IP shouldn't fail the job
+    # and spam a "workflow failed" email every run when everything else worked.
+    return 1 if error_count == len(pages) else 0
 
 
 if __name__ == "__main__":

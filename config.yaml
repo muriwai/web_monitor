@@ -23,13 +23,11 @@ pages:
   #  - The Yorkshire Water "hub" (ArcGIS) and Wessex Water "StoryMap" pages are
   #    JS-rendered; a plain HTML fetch sees little content, so change
   #    detection on those will be unreliable.
+  #  - Anglian Water and Southern Water are NOT included here: both consistently
+  #    return HTTP 403 when fetched from GitHub Actions' IP ranges (but work
+  #    fine from a residential/office connection) -- looks like IP/ASN-based bot
+  #    blocking that request headers alone can't work around.
   # ---------------------------------------------------------------------------
-
-  # Anglian Water -- DWMP28 (no separate Cycle 2 sub-page yet; all on main page)
-  - name: anglian-dwmp-main
-    url: https://www.anglianwater.co.uk/about-us/our-strategies-and-plans/drainage-and-wastewater-management-plan/
-    selector: "main"
-    ignore_regex: []
 
   # Northumbrian Water -- DWMP28 (still Cycle-1-only content as of last check)
   - name: northumbrian-dwmp-main
@@ -70,16 +68,6 @@ pages:
     ignore_regex: []
   - name: southwestwater-dwmp28-documents
     url: https://www.southwestwater.co.uk/about-us/what-we-do/engineering-projects/wastewater/drainage-and-wastewater-management-plan/dwmp28/our-dwmp28-documents
-    selector: "main"
-    ignore_regex: []
-
-  # Southern Water -- DWMP28 (live page, no docs listed yet)
-  - name: southernwater-dwmp-main
-    url: https://www.southernwater.co.uk/about-us/our-plans/drainage-and-wastewater-management-plans/
-    selector: "main"
-    ignore_regex: []
-  - name: southernwater-dwmp28
-    url: https://www.southernwater.co.uk/about-us/our-plans/drainage-and-wastewater-management-plan-2028/
     selector: "main"
     ignore_regex: []
 
